@@ -5,9 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+    <style>
+	 body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .feed {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .feed h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .feed .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+    </style>
 </head>
 <body>
-	<!-- fucking content here -->
+	 <div class="container">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <h3 class="muted">ITIS Fobia</h3>
+      </div>
+
+      <hr>
+
+      <div class="row-fluid marketing">
+        <div id="top5" class="span6">
+          <h4>Top 5 here</h4>
+        </div> <!-- end top5 -->
+
+        <div id="uc" class="span6">
+          <h4>UC here</h4>
+        </div> <!-- end uc -->
+      </div>
+
+      <hr>
+
+      <div class="feed">
+        <h6>news feed here</h6>
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p>&copy; Dan Tumaykin &amp; Francesco Zanini 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+
+
     <script src="js/jquery-1.9.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/fobia-api.js"></script>

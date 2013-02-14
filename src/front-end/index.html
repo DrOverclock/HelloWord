@@ -42,6 +42,16 @@
         margin-top: 28px;
       }
     </style>
+
+    <!-- Handlebars templates -->
+ 	<script id="top-table-entry" type="text/x-handlebars-template">
+		<tr>
+			<td>{{number}}</td>
+			<td>{{name}}</td>
+			<td>{{score}}</td>
+		</tr>
+	</script>
+
 </head>
 <body>
 	 <div class="container">
@@ -58,11 +68,22 @@
       <hr>
 
       <div class="row-fluid marketing">
-        <div id="top5" class="span6">
-          <h4>Top 5 here</h4>
+        <div class="span4">
+          <table class="table">
+			 <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nome</th>
+                  <th>Punteggio</th>
+                </tr>
+              </thead>
+              <tbody id="top5">
+                <!-- top table here -->
+              </tbody>
+          </table>
         </div> <!-- end top5 -->
 
-        <div id="uc" class="span6">
+        <div id="uc" class="span8">
           <h4>UC here</h4>
         </div> <!-- end uc -->
       </div>
@@ -84,6 +105,7 @@
 
     <script src="js/jquery-1.9.1.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/handlebars.js"></script>
     <script src="js/fobia-api.js"></script>
     <script src="js/app.js"></script>
 </body>

@@ -18,6 +18,8 @@ application = {};
 		a.hbTemplates["auth-frame"] = Handlebars.compile($("#auth-frame").html());
 		a.hbTemplates["home-frame"] = Handlebars.compile($("#home-frame").html());
 		a.hbTemplates["error-frame"] = Handlebars.compile($("#error-frame").html());
+		a.hbTemplates["kill-frame"] = Handlebars.compile($("#kill-frame").html());
+		a.hbTemplates["congrats-frame"] = Handlebars.compile($("#congrats-frame").html());
 
 		a.initialized = true;
 	}
@@ -46,7 +48,7 @@ application = {};
 			uc.html("");
 			uc.append(a.hbTemplates[frame](data));
 			a.bindUC(frame);
-		}, 400);
+		}, 200);
 
 		uc.fadeToggle();
 		a.session.nav.push({
@@ -102,8 +104,20 @@ application = {};
 				$("#goBackButton").on("click", function() {a.goBack()});
 				break; 		
 			case "home-frame":
-				$("#killButton").on("click", function() {a.pushUC("kill-frame")});
-				break;		
+				$("#killButton").on("click", function() { a.pushUC("kill-frame", {"target": a.session["data"].target})});
+				break;	
+			case "kill-frame":
+				$("#finishButton").on("click", function() {
+					api.killRequest($("#pin").val(), function(r) {
+						if(r.status == "ok")
+							a.pushUC("congrats-frame", {"target": a.session["data"].target});
+						else
+							a.pushUC("error-frame", {error: "PIN scorretto!"});
+					});
+				});
+				break;
+			case "congrats-frame":
+				setTimeout(function() {a.pushUC("home-frame", a.session["data"]);}, 3000 );
 		};
 	};
 
@@ -116,6 +130,7 @@ application = {};
 			api.userdataRequest(function(r) {
 				if(r.status == "ok") {
 					a.session["auth-state"] = "ok";
+					a.session["data"] = r;
 					a.pushUC("home-frame", r);
 				}
 				else

@@ -141,4 +141,11 @@ api = {};
 		});
 	};
 
+	f.killRequest = function(pin, callback) {
+		console.log("finish him!");
+		callback({
+			status: "fail"
+		});
+	};
+
 })(api);

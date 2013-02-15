@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TYGRA - killing free of charge</title>
+	<title>HelloWord - killing free of charge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
@@ -90,16 +90,33 @@
             </p>
           </div>
   	</script>
-      <script id="error-frame" type="text/x-handlebars-template">
-        <div class="hero-unit">
-          <h1>Errore!</h1>
-          <p>{{error}}</p>
-            <p>
-              <a class="btn btn-primary btn-large" id="goBackButton">
-                Torna indietro
-              </a>
-            </p>
-        </div>
+    <script id="error-frame" type="text/x-handlebars-template">
+      <div class="hero-unit">
+        <h1>Errore!</h1>
+        <p>{{error}}</p>
+          <p>
+            <a class="btn btn-primary btn-large" id="goBackButton">
+              Torna indietro
+            </a>
+          </p>
+      </div>
+    </script>
+    <script id="kill-frame" type="text/x-handlebars-template">
+      <h2>{{target}}</h2>
+      <form>
+        <input type="text" id="pin" placeholder="Inserisci pin del tuo target!"/>
+        <p>
+            <a class="btn btn-success btn-large" id="finishButton">
+              Finish him!
+            </a>
+          </p>
+      </form>
+    </script>
+    <script id="congrats-frame" type="text/x-handlebars-template">
+      <div class="hero-unit">
+        <h1>Complimenti!</h1>
+        <p>Hai ucciso {{target}}.</p>
+      </div>
     </script>
 
 
@@ -113,7 +130,7 @@
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
-        <h3 class="muted">TYGRA</h3>
+        <h3 class="muted">Hello Word</h3>
       </div>
 
       <hr>

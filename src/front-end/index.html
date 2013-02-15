@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ITISFOBIA - worst name ever</title>
+	<title>TYGRA - killing free of charge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <style>
-	 body {
+  	  body {
         padding-top: 20px;
         padding-bottom: 40px;
       }
@@ -20,7 +20,6 @@
         margin: 30px 0;
       }
 
-      /* Main marketing message and sign up button */
       .feed {
         margin: 60px 0;
         text-align: center;
@@ -34,34 +33,57 @@
         padding: 14px 24px;
       }
 
-      /* Supporting marketing content */
       .marketing {
         margin: 60px 0;
       }
       .marketing p + h4 {
         margin-top: 28px;
       }
+
+      #chart, #uc {
+        padding: 20px;
+        border: solid #EEE 1px;
+        min-height: 280px;
+      }
     </style>
 
     <!-- Handlebars templates -->
- 	<script id="top-table-entry" type="text/x-handlebars-template">
-		<tr>
-			<td>{{number}}</td>
-			<td>{{name}}</td>
-			<td>{{score}}</td>
-		</tr>
-	</script>
- 	<script id="auth-frame" type="text/x-handlebars-template">
-	      <form class="form-signin">
-	        <h2 class="form-signin-heading">Login</h2>
-	        <input id="authUsername" type="text" class="input-block-level" placeholder="Indirizzo e-mail">
-	        <input id="authPassword" type="password" class="input-block-level" placeholder="Password">
-	        <button id="authButton" class="btn btn-large btn-primary" type="submit">Accedi</button>
-	      </form>
-	</script> 	
-	<script id="home-frame" type="text/x-handlebars-template">
-	      <h6>Target: {{target}}</h6>
-	</script>
+   	<script id="top-table-entry" type="text/x-handlebars-template">
+  		<tr>
+  			<td>{{number}}</td>
+  			<td>{{name}}</td>
+  			<td>{{score}}</td>
+  		</tr>
+  	</script>
+   	<script id="auth-frame" type="text/x-handlebars-template">
+  	      <form class="form-signin" style="width: 400px; float:right; margin-right: 100px;">
+  	        <h2 class="form-signin-heading">Login</h2>
+  	        <input id="authUsername" type="text" class="input-block-level" placeholder="Username">
+            <input id="authPassword" type="password" class="input-block-level" placeholder="Password">
+
+            <input id="authPassword2" type="password" class="input-block-level" style="display: none;" placeholder="Ripeti la password">
+            <hr style="display: none;">
+            <input id="authName" type="text" class="input-block-level" style="display: none;" placeholder="Nome">
+  	        <input id="authSurname" type="text" class="input-block-level" style="display: none;" placeholder="Cognome">
+
+  	        <button id="authButton" class="btn btn-large btn-primary" type="submit">Accedi o iscriviti</button>
+  	      </form>
+  	</script> 	
+  	<script id="home-frame" type="text/x-handlebars-template">
+  	      <h6>Target: {{target}}</h6>
+  	</script>
+      <script id="error-frame" type="text/x-handlebars-template">
+        <div class="hero-unit">
+          <h1>Errore!</h1>
+          <p>{{error}}</p>
+            <p>
+              <a class="btn btn-primary btn-large" id="goBackButton">
+                Torna indietro
+              </a>
+            </p>
+        </div>
+    </script>
+
 
 </head>
 <body>
@@ -73,15 +95,15 @@
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
-        <h3 class="muted">ITIS Fobia</h3>
+        <h3 class="muted">TYGRA</h3>
       </div>
 
       <hr>
 
       <div class="row-fluid marketing">
-        <div class="span4">
+        <div id="chart" class="span4">
           <table class="table">
-			 <thead>
+			        <thead>
                 <tr>
                   <th>#</th>
                   <th>Nome</th>
@@ -95,14 +117,14 @@
         </div> <!-- end top5 -->
 
         <div id="uc" class="span8">
-          <h4>UC here</h4>
+          <small>Loading...</small>
         </div> <!-- end uc -->
       </div>
 
       <hr>
 
       <div class="feed">
-        <h6>news feed here</h6>
+        <small>Loading...</small>
       </div>
 
       <hr>

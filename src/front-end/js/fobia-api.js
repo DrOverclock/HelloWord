@@ -130,7 +130,14 @@ api = {};
 		console.log("get user data!");
 		callback({
 			status: "ok",
-			target: "verona"
+			name: "Dan Tumaykin",
+			course: "5A IN",
+			dieFrase: "Embrace the eternity!",
+			pin: "007",
+			score: 9001,
+			target: "Alessandro Verona",
+			section: "Triennio Informatica",
+			killFrase: "WLF"
 		});
 	};
 

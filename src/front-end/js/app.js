@@ -100,7 +100,10 @@ application = {};
  				break;
 			case "error-frame":
 				$("#goBackButton").on("click", function() {a.goBack()});
-				break; 				
+				break; 		
+			case "home-frame":
+				$("#killButton").on("click", function() {a.pushUC("kill-frame")});
+				break;		
 		};
 	};
 

@@ -70,7 +70,25 @@
   	      </form>
   	</script> 	
   	<script id="home-frame" type="text/x-handlebars-template">
-  	      <h6>Target: {{target}}</h6>
+          <div class="well">
+            <h2>{{name}}</h2>
+            <h4>{{course}}</h4>
+            <small><strong>{{dieFrase}}</strong> - se la senti, sei morto</small><br/>
+            <small><strong>{{pin}}</strong> - tuo pin</small>
+            <h1 style="float: right; margin-top: -105px;">{{score}} punti</h1>
+          </div>
+          <hr>
+          <h2>Target</h2>
+          <div class="well">
+            <h2>{{target}}</h2>
+            <h4>{{section}}</h4>
+            <small><strong>{{killFrase}}</strong> - ad un passo dalla morte</small><br/>
+            <p>
+              <a class="btn btn-primary btn-large" id="killButton" style="float: right; margin-top: -110px;">
+                KILL!
+              </a>
+            </p>
+          </div>
   	</script>
       <script id="error-frame" type="text/x-handlebars-template">
         <div class="hero-unit">

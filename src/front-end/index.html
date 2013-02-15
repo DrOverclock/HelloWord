@@ -51,6 +51,17 @@
 			<td>{{score}}</td>
 		</tr>
 	</script>
+ 	<script id="auth-frame" type="text/x-handlebars-template">
+	      <form class="form-signin">
+	        <h2 class="form-signin-heading">Login</h2>
+	        <input id="authUsername" type="text" class="input-block-level" placeholder="Indirizzo e-mail">
+	        <input id="authPassword" type="password" class="input-block-level" placeholder="Password">
+	        <button id="authButton" class="btn btn-large btn-primary" type="submit">Accedi</button>
+	      </form>
+	</script> 	
+	<script id="home-frame" type="text/x-handlebars-template">
+	      <h6>Target: {{target}}</h6>
+	</script>
 
 </head>
 <body>

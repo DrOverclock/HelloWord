@@ -1,6 +1,11 @@
 // api for itisfobia web service
 
-// Gets top 5 players, then calls `callback` with responce array as argument. Players are ordered by score in descending order.
+/***
+
+Gets top 5 players, then calls `callback` with responce array as argument. 
+Players are ordered by score in descending order.
+
+***/
 function getTop5 (callback) {
 	// TODO: replace with actual data
 	callback([
@@ -31,3 +36,28 @@ function getTop5 (callback) {
 			}
 		]);
 };
+
+/***
+
+Authenticates a user with `username` and `password`, then calls the `callback`.
+Object with state and user data is passed to `callback`.
+
+***/
+function authenticate(username, password, callback) {
+	// TODO: replace with actual authentication
+	if(username == 'dan' && password == "tuma")
+	{
+		callback({
+			status: "ok",
+			data: {
+				target: "Francesco Zanini"
+			}
+		});
+	}
+	else
+	{
+		callback({
+			status: "fail"
+		});
+	}
+}

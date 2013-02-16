@@ -8,9 +8,15 @@ application = {};
 	a.init = function () {
 		if(a.initialized) return;
 
+
 		// data about user
 		a.session = {};
-		a.session.nav = []; // navigation stack
+		if(sessionStorage.session != undefined)
+			a.session = JSON.parse(sessionStorage.session);
+
+		a.nav = []; // navigation stack
+		if(sessionStorage.nav != undefined)
+			a.nav = JSON.parse(sessionStorage.nav);
 
 		// handle bars template compilation
 		a.hbTemplates = {}; // array of templates
@@ -35,7 +41,13 @@ application = {};
 			};
 		});
 
-		// push auth screen
+		// restore previous session
+		if(a.nav.length > 0)
+		{
+			var navEntry = a.nav[a.nav.length-1];
+			a.pushUC(navEntry.frame, navEntry.data);
+		}
+		else // push auth screen
 		a.pushUC("auth-frame", {});
 	};
 
@@ -48,18 +60,19 @@ application = {};
 			uc.html("");
 			uc.append(a.hbTemplates[frame](data));
 			a.bindUC(frame);
-		}, 200);
+		}, 300);
 
 		uc.fadeToggle();
-		a.session.nav.push({
+		a.nav.push({
 			"frame": frame,
 			"data": data
 		});
+		sessionStorage.nav = JSON.stringify(a.nav); // save to session storage
 	};
 
 	a.goBack = function() {
-		a.session.nav.pop(); // remove current
-		var last = a.session.nav.pop(); // remove precedent
+		a.nav.pop(); // remove current
+		var last = a.nav.pop(); // remove precedent
 		a.pushUC(last.frame, last.data); // repush precedent
 	};
 
@@ -76,6 +89,8 @@ application = {};
 					if(a.session["auth-state"] != "verify") {
 						a.session["login"] = $("#authUsername").val();
 						a.session["password"] = $("#authPassword").val();
+						a.saveSession();
+
 
 						api.authRequest(
 							a.session["login"],
@@ -89,6 +104,7 @@ application = {};
 						a.session["password"] = $("#authPassword").val();
 						a.session["name"] = $("#authName").val();
 						a.session["surname"] = $("#authSurname").val();
+						a.saveSession();
 
 						api.verifyRequest(
 							a.session["login"],
@@ -131,6 +147,7 @@ application = {};
 				if(r.status == "ok") {
 					a.session["auth-state"] = "ok";
 					a.session["data"] = r;
+					a.saveSession();
 					a.pushUC("home-frame", r);
 				}
 				else
@@ -140,6 +157,7 @@ application = {};
 
 		else if(result.status == "verify") { // user exists in db, need additional data
 			a.session["auth-state"] = "verify";
+			a.saveSession();
 
 			// show the registration form
 			$("form").find(":hidden").each(function() {$(this).slideToggle();});
@@ -155,6 +173,11 @@ application = {};
 		{
 			a.pushUC("error-frame", {error: "Server d'autentificazione attualmente non disponibile, riprovare piu' tardi."});
 		}
+	};
+
+	// saves a.session to session storage
+	a.saveSession = function () {
+		sessionStorage.session = JSON.stringify(a.session);
 	};
 
 })(application);

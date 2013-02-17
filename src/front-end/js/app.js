@@ -8,7 +8,7 @@ application = {};
 	a.init = function () {
 		if(a.initialized) return;
 
-
+		a.loading = false;
 		// data about user
 		a.session = {};
 		if(sessionStorage.session != undefined)
@@ -54,7 +54,7 @@ application = {};
 	// pushes UC to screen, binds data and binds related events
 	a.pushUC = function(frame, data) {
 		var uc = $("#uc");
-		uc.fadeToggle()
+		uc.fadeToggle();
 
 		setTimeout(function() {
 			uc.html("");
@@ -178,6 +178,21 @@ application = {};
 	// saves a.session to session storage
 	a.saveSession = function () {
 		sessionStorage.session = JSON.stringify(a.session);
+	};
+
+	// toggles loading screen in UC frame
+	a.toggleLoading = function() {
+		var uc = $("#uc");		
+		if(a.loading) {
+			uc.html(a.ucContent);
+			a.loading = false;
+		}
+		else
+		{
+			a.ucContent = uc.html();
+			uc.html("<div class=\"progress progress-striped active\"><div class=\"bar\" style=\"width: 100%;\"></div></div>");
+			a.loading = true;
+		}
 	};
 
 })(application);
